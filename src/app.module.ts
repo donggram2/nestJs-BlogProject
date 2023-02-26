@@ -6,16 +6,6 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 import { AppController } from './app.controller'
 import { UserEntity } from './users/users.entity'
 import { UsersModule } from './users/users.module'
-import { BlogsModule } from './blogs/blogs.module'
-import { TagsModule } from './tags/tags.module'
-import { VisitorsModule } from './visitors/visitors.module'
-import { ProfilesModule } from './profiles/profiles.module'
-import { ProfileEntity } from './profiles/profiles.entity'
-import { BlogEntity } from './blogs/blogs.entity'
-import { VisitorEntity } from './visitors/visitors.entity'
-import { TagEntity } from './tags/tags.entity'
-import { VisitorsModule } from './visitors/visitors.module';
-import { VisitorsModule } from './visitors/visitors.module';
 
 const typeOrmModuleOptions = {
   useFactory: async (
@@ -28,7 +18,7 @@ const typeOrmModuleOptions = {
     username: configService.get('DB_USERNAME'),
     password: configService.get('DB_PASSWORD'),
     database: configService.get('DB_NAME'),
-    entities: [UserEntity, ProfileEntity, BlogEntity, VisitorEntity, TagEntity],
+    entities: [UserEntity],
     synchronize: true, //! set 'false' in production
     autoLoadEntities: true,
     logging: true,
@@ -58,10 +48,6 @@ const typeOrmModuleOptions = {
     }),
     TypeOrmModule.forRootAsync(typeOrmModuleOptions),
     UsersModule,
-    BlogsModule,
-    TagsModule,
-    VisitorsModule,
-    ProfilesModule,
   ],
   controllers: [AppController],
 })
